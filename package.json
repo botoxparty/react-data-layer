@@ -1,0 +1,86 @@
+{
+  "name": "react-data-layer",
+  "version": "1.0.0",
+  "description": "A library to manage data fetching for a server-side React application that supports Suspense",
+  "main": "build/main/index.js",
+  "typings": "build/main/index.d.ts",
+  "module": "build/module/index.js",
+  "repository": "https://github.com/botoxparty/react-data-layer",
+  "license": "MIT",
+  "keywords": [],
+  "scripts": {
+    "build": "run-p build:*",
+    "build:main": "tsc -p tsconfig.build.json",
+    "build:module": "tsc -p tsconfig.module.json",
+    "fix": "run-s fix:*",
+    "fix:prettier": "prettier \"src/**/*.ts*\" --write",
+    "fix:lint": "eslint src --ext .ts --fix",
+    "test": "run-s build test:*",
+    "test:lint": "eslint src --ext .ts",
+    "test:prettier": "prettier \"src/**/*.tsx\" -l",
+    "test:unit": "jest",
+    "watch:test": "jest --watch",
+    "doc:publish": "gh-pages -m \"[ci skip] Updates\" -d build/docs",
+    "version": "standard-version",
+    "prepare-release": "run-s version doc:publish"
+  },
+  "engines": {
+    "node": ">=10"
+  },
+  "dependencies": {
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
+    "jest-environment-jsdom": "^28.1.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@ava/typescript": "^1.1.1",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.3.0",
+    "@types/jest": "^28.1.7",
+    "@typescript-eslint/eslint-plugin": "^4.0.1",
+    "@typescript-eslint/parser": "^4.0.1",
+    "ava": "^3.12.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^7.8.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "gh-pages": "^3.1.0",
+    "jest": "^28.1.3",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.1.1",
+    "standard-version": "^9.0.0",
+    "ts-jest": "^28.0.8",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.2"
+  },
+  "files": [
+    "build/main",
+    "build/module",
+    "!**/*.spec.*",
+    "!**/*.json",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md"
+  ],
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "prettier": {
+    "singleQuote": true
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "jsdom",
+    "roots": [
+      "src/"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/jest.setup.ts"
+   ]
+  }
+}
